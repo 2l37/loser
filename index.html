@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LOSER | Developer</title>
-
+<title>loser.js</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 *{
   margin:0;
@@ -14,7 +12,6 @@
   box-sizing:border-box;
   font-family:'Space Grotesk', sans-serif;
 }
-
 body{
   background:#0b0b0f;
   color:#e6e6e6;
@@ -35,7 +32,7 @@ body{
   box-shadow:0 0 20px rgba(255,255,255,0.15);
 }
 
-/* NOISE */
+/* NOISE & BG */
 .noise{
   position:fixed;
   inset:0;
@@ -44,8 +41,6 @@ body{
   pointer-events:none;
   z-index:2;
 }
-
-/* BG GLOW */
 .bgGlow{
   position:fixed;
   width:600px;
@@ -66,8 +61,8 @@ body{
   padding:0 8%;
   position:relative;
   z-index:5;
+  gap:40px;
 }
-
 h1{
   font-size:7rem;
   letter-spacing:-4px;
@@ -75,163 +70,163 @@ h1{
   color:#f2f2f2;
   text-shadow:0 0 40px rgba(255,255,255,0.05);
 }
-
 .subtitle{
   margin-top:10px;
   opacity:.7;
-  font-size:1.2rem;
+  font-size:1.25rem;
   color:#cfcfcf;
 }
-
 .tags{
   margin-top:30px;
   display:flex;
   gap:10px;
   flex-wrap:wrap;
 }
-
 .tag{
   border:1px solid rgba(255,255,255,0.12);
-  padding:8px 14px;
+  padding:8px 16px;
   border-radius:999px;
-  font-size:.9rem;
+  font-size:.95rem;
   color:#d0d0d0;
   background:rgba(255,255,255,0.02);
   transition:.3s;
 }
-
 .tag:hover{
   border-color:#ffffff55;
-  box-shadow:0 0 15px rgba(255,255,255,0.08);
+  box-shadow:0 0 15px rgba(255,255,255,0.1);
 }
 
-/* CARD */
-.card{
-  margin-top:40px;
-  padding:25px;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(255,255,255,0.02);
-  backdrop-filter:blur(20px);
-  border-radius:20px;
-  color:#d8d8d8;
-}
-
-/* PFP */
+/* CIRCULAR PROFILE PICTURE */
 .pfpWrap{
   width:320px;
   height:320px;
-  opacity:0;
-  animation:fadeIn 1.2s forwards;
+  border-radius:50%;
+  overflow:hidden;
+  flex-shrink:0;
+  box-shadow:0 0 60px rgba(255,255,255,0.12);
+  transition:0.4s ease;
 }
-
-.pfpWrap a{
-  display:block;
-  width:100%;
-  height:100%;
+.pfpWrap:hover{
+  transform:scale(1.04);
 }
-
 .pfp{
   width:100%;
   height:100%;
   object-fit:cover;
-  border-radius:20px;
-  filter:grayscale(100%) contrast(110%) brightness(90%);
-  box-shadow:0 0 60px rgba(255,255,255,0.05);
-  transition:0.25s ease;
+  border-radius:50%;
+  filter:grayscale(85%) contrast(105%) brightness(92%);
+  transition:0.4s ease;
 }
-
-.pfpWrap a:hover .pfp{
-  transform:scale(1.05);
-  filter:grayscale(0%) brightness(1.1);
+.pfpWrap:hover .pfp{
+  filter:grayscale(0%) brightness(1.08);
 }
 
 /* SECTIONS */
 section{
-  padding:120px 8%;
+  padding:140px 8% 100px;
   position:relative;
   z-index:5;
 }
-
 .title{
-  font-size:3rem;
-  margin-bottom:30px;
+  font-size:3.2rem;
+  margin-bottom:50px;
+  text-align:center;
   color:#eaeaea;
 }
 
+/* GRID */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:24px;
 }
-
 .box{
-  padding:20px;
+  padding:28px 24px;
   border:1px solid rgba(255,255,255,0.08);
-  background:rgba(255,255,255,0.02);
-  border-radius:15px;
-  transition:.3s;
+  background:rgba(255,255,255,0.015);
+  border-radius:16px;
+  transition:all .4s ease;
+  text-align:center;
   color:#d0d0d0;
 }
-
 .box:hover{
-  transform:translateY(-8px);
+  transform:translateY(-10px);
   border-color:#ffffff33;
-  box-shadow:0 0 20px rgba(255,255,255,0.05);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
 }
 
 /* CONTACT */
 .contactGrid{
   display:flex;
-  gap:20px;
+  gap:24px;
   flex-wrap:wrap;
+  justify-content:center;
 }
-
 .contactCard{
   flex:1;
-  min-width:250px;
-  padding:20px;
+  min-width:280px;
+  max-width:380px;
+  padding:32px;
   border:1px solid rgba(255,255,255,0.12);
-  border-radius:15px;
-  background:rgba(255,255,255,0.02);
+  border-radius:16px;
+  background:rgba(255,255,255,0.015);
+  text-align:center;
+  transition:.3s;
 }
-
+.contactCard:hover{
+  border-color:#ffffff33;
+}
 .copyBtn{
-  margin-top:10px;
-  padding:8px 12px;
+  margin-top:12px;
+  padding:10px 20px;
   background:#111;
-  border:1px solid rgba(255,255,255,0.2);
+  border:1px solid rgba(255,255,255,0.25);
   color:#e6e6e6;
   cursor:pointer;
   border-radius:8px;
+  transition:.3s;
+}
+.copyBtn:hover{
+  background:#222;
+  border-color:#ffffff55;
 }
 
 footer{
   text-align:center;
-  padding:60px;
+  padding:80px 20px;
   opacity:.4;
+  font-size:0.9rem;
 }
 
-@keyframes fadeIn{
-  to{opacity:1;}
+/* Toast */
+#toast{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,0.85);
+  color:#fff;
+  padding:12px 24px;
+  border-radius:999px;
+  font-size:0.95rem;
+  opacity:0;
+  transition:all 0.3s;
+  z-index:10000;
+  pointer-events:none;
 }
 </style>
 </head>
-
 <body>
-
 <div class="cursor"></div>
 <div class="bgGlow"></div>
 <div class="noise"></div>
 
 <section class="hero">
-
   <div>
-    <h1>LOSER</h1>
-
+    <h1>loser</h1>
     <div class="subtitle">
       JavaScript Developer • Discord Bot Builder • Automation Engineer
     </div>
-
     <div class="tags">
       <div class="tag">Node.js</div>
       <div class="tag">Discord.js</div>
@@ -239,21 +234,18 @@ footer{
       <div class="tag">Automation</div>
       <div class="tag">Bots</div>
     </div>
-
-    <div class="card">
-      Building clean Discord systems, automation tools and backend services.
-      <br><br>
+    <div class="card" style="margin-top:40px; padding:25px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.02); border-radius:20px;">
+      Building clean Discord systems, automation tools and backend services.<br><br>
       Minimal. Fast. Efficient. System-driven development.
     </div>
   </div>
 
-  <!-- FIXED PFP LINK -->
+  <!-- Fixed PFP -->
   <div class="pfpWrap">
     <a href="https://cdn.discordapp.com/avatars/317511627186372609/b15773cac7660755dcd76aaa8ebc8702.webp?size=1024" target="_blank" rel="noopener noreferrer">
-      <img class="pfp" src="file_000000008a2c720c9ceea90b3103e304" />
+      <img class="pfp" src="https://cdn.discordapp.com/avatars/317511627186372609/b15773cac7660755dcd76aaa8ebc8702.webp?size=1024" alt="loser">
     </a>
   </div>
-
 </section>
 
 <section>
@@ -278,54 +270,59 @@ footer{
 
 <section>
   <div class="title">Contact</div>
-
   <div class="contactGrid">
-
     <div class="contactCard">
       <h3>Discord</h3>
       <p id="discord">loser.js</p>
       <button class="copyBtn" onclick="copyText('discord')">Copy</button>
     </div>
-
     <div class="contactCard">
       <h3>Telegram</h3>
       <p id="telegram">@loser_js</p>
       <button class="copyBtn" onclick="copyText('telegram')">Copy</button>
     </div>
-
   </div>
 </section>
 
 <footer>
-  © loser.wiki — built by LOSER
+  © loser.wiki
 </footer>
+
+<div id="toast"></div>
 
 <script>
 const cursor = document.querySelector('.cursor');
-
-window.addEventListener('mousemove', e=>{
+window.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
 
-function copyText(id){
+function copyText(id) {
   const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('Copied to clipboard!');
+  });
 }
 
-document.querySelectorAll('.box, .contactCard').forEach(el=>{
-  el.addEventListener('mousemove',(e)=>{
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left)/r.width;
-    const y = (e.clientY - r.top)/r.height;
-    el.style.transform = `rotateY(${(x-0.5)*6}deg) rotateX(${-(y-0.5)*6}deg)`;
-  });
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.style.opacity = '1';
+  setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+}
 
-  el.addEventListener('mouseleave',()=>{
-    el.style.transform = "rotateY(0deg) rotateX(0deg)";
+// Card tilt effect
+document.querySelectorAll('.box, .contactCard').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    el.style.transform = `perspective(1000px) rotateY(${(x-0.5)*8}deg) rotateX(${-(y-0.5)*8}deg)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg)";
   });
 });
 </script>
-
 </body>
 </html>
